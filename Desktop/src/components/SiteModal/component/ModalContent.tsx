@@ -1,52 +1,36 @@
 // COMPONENT
-import SiteCloseButton from "./SiteCloseButton"
+import SiteCloseButton from "./SiteCloseButton";
 // CSS
-import "../SiteModal.css"
+import "../SiteModal.css";
 // PROPS
-import { modalContentProps } from "../SiteModalProps"
+import { modalContentProps } from "../SiteModalProps";
 
 const SiteModalContent = (props: modalContentProps) => {
+  const { click, content, type } = props;
 
-    const { click, content, type } = props
+  // Close Button for Modal
+  const closeButton = <SiteCloseButton click={click} type={type} />;
 
-    // Close Button for Modal
-    const closeButton = (
-        <SiteCloseButton 
-            click={click} 
-            type={type}
-        />
-    )
+  // Contents for a modal with a white background
+  const modalContent = (
+    <div className="modal-container">
+      {closeButton}
+      <div className="modal-container-content">{content}</div>
+    </div>
+  );
 
-    // Contents for a modal with a white background
-    const modalContent = (
+  // Contents for a blank modal with no background
+  const modalBlankContent = (
+    <>
+      {closeButton}
+      {content}
+    </>
+  );
 
-        <div className="modal-container">
-            {closeButton}
-            <div className="modal-container-content">
-                {content}
-            </div>
-        </div>
-    )
+  // Renders type of modal depending on type prop
+  const modalLogic = type === "blank" ? modalBlankContent : modalContent;
 
-    // Contents for a blank modal with no background
-    const modalBlankContent = (
-        <>
-            {closeButton}
-            {content}
-        </>
-    )
+  return <div className="modal-component w-100">{modalLogic}</div>;
+};
 
-    // Renders type of modal depending on type prop
-    const modalLogic = type === "blank" ?  
-        modalBlankContent 
-        : 
-        modalContent
-
-    return (
-        <div className="modal-component w-100">
-            {modalLogic}
-        </div>
-    )
-}
-
-export default SiteModalContent
+export default SiteModalContent;

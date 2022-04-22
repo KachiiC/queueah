@@ -1,3 +1,3 @@
 export interface AuthenticationProps {
-    authentication: Boolean
+  authentication: Boolean;
 }

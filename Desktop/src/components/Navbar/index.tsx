@@ -5,7 +5,6 @@ import authenticatedMenu from "./authenicatedMenu";
 import LogButton from "./authenicationButton";
 
 const Navbar = () => {
-  
   const { isAuthenticated } = useAuth0();
 
   return (

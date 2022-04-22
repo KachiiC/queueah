@@ -35,14 +35,14 @@ export const AntdTableColumns = [
         key: "gender",
         filters: [
             {
-              text: 'Male',
-              value: 'male',
+                text: 'Male',
+                value: 'male',
             },
             {
-              text: 'Female',
-              value: 'female',
+                text: 'Female',
+                value: 'female',
             }
         ],
-        onFilter: (value: any,record: { gender: string; }) => record.gender.indexOf(value) === 0
+        onFilter: (value: any, record: { gender: string; }) => record.gender.indexOf(value) === 0
     },
 ];

@@ -6,5 +6,5 @@ export interface SingleListProps {
 }
 
 export interface AntdListProps {
-    data: SingleListProps[] 
+    data: SingleListProps[]
 }

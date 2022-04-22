@@ -1,7 +1,6 @@
 import { List, Avatar } from "antd";
 import { SingleListProps } from "./AntdListProps";
 
-
 const SingleList = (props: { data: SingleListProps }) => {
   const { avatar, title, description, content } = props.data;
   const { Item } = List;
@@ -28,4 +27,4 @@ const SingleList = (props: { data: SingleListProps }) => {
   );
 };
 
-export default SingleList
+export default SingleList;

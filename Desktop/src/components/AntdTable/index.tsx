@@ -1,14 +1,17 @@
 import { Table } from "antd";
 import { AntdTableColumns } from "./AntdTableColumns";
-import './AntdTableStyles.css'
+import "./AntdTableStyles.css";
 
-const AntdTable = (props: { data: any[]}) => {
+const AntdTable = (props: { data: any[] }) => {
   return (
-      <>
-        <div className="antd-table">
-        <Table dataSource={props.data} columns={AntdTableColumns} pagination={false} sticky/>
-        </div>
-      </>
+    <div className="antd-table">
+      <Table
+        dataSource={props.data}
+        columns={AntdTableColumns}
+        pagination={false}
+        sticky
+      />
+    </div>
   );
 };
 

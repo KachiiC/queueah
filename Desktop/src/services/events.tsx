@@ -5,7 +5,7 @@ const GetEvent = (organizer_id: String, event_id: String) => {
   const [event, setEvent] = useState(emptyEvent);
 
   const FetchUrl = `${process.env.REACT_APP_HEROKU_LINK}/event/${organizer_id}/${event_id}`;
-  console.log(FetchUrl)
+  console.log(FetchUrl);
 
   useEffect(() => {
     fetch(FetchUrl)

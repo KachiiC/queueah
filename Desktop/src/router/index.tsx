@@ -15,7 +15,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Navbar />
-        <Routes children={routerLogic} />
+      <Routes children={routerLogic} />
     </BrowserRouter>
   );
 };

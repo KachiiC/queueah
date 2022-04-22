@@ -3,13 +3,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { emptyOrganizer } from "./data";
 
 const OrganizerFinder = () => {
-  
   const [organizer, setOrganizer] = useState(emptyOrganizer);
 
   const { user } = useAuth0();
 
   useEffect(() => {
-    fetch(`https://queueah.herokuapp.com/organizer/${user?.email}`, {
+    fetch(`${process.env.REACT_APP_HEROKU_LINK}/organizer/${user?.email}`, {
       method: "PUT",
       body: JSON.stringify({
         email: user?.email,
