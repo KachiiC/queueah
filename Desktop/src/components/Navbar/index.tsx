@@ -1,22 +1,17 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { Menu } from "antd";
-import { Link } from "react-router-dom";
-import Pages from "../../pages";
+import defaultMenu from "./defaultMenu";
+import authenticatedMenu from "./authenicatedMenu";
+import LogButton from "./authenicationButton";
 
 const Navbar = () => {
-  const { Item } = Menu;
-
-  const displayLinks = Pages.map((page) => {
-    const { key, icon, path } = page;
-    return (
-      <Item key={key} icon={icon}>
-        <Link to={path}>{key}</Link>
-      </Item>
-    );
-  });
+  
+  const { isAuthenticated } = useAuth0();
 
   return (
-    <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
-      {displayLinks}
+    <Menu mode="horizontal" theme="dark">
+      {isAuthenticated ? authenticatedMenu : defaultMenu}
+      <LogButton />
     </Menu>
   );
 };
