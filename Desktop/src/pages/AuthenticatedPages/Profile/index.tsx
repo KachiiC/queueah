@@ -1,4 +1,4 @@
-import AntdTabs from "../../../components/AntdTabs";
+import AntdTabs from "components/AntdTabs";
 import ProfileData from "./ProfileData";
 
 const Profile = () => {

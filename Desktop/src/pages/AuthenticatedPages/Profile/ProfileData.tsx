@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Skeleton } from "antd";
-import OrganizerFinder from "../../../services/organizers";
+import OrganizerFinder from "services/organizers";
 import ProfileLayout from "./ProfileLayout";
 
 const ProfileData = () => {

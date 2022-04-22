@@ -1,6 +1,6 @@
 import Menu from "antd/lib/menu";
 import { Link } from "react-router-dom";
-import AuthticatedPages from "../../pages/AuthenticatedPages";
+import AuthticatedPages from "pages/AuthenticatedPages";
 
 
 const authenticatedMenu = AuthticatedPages.map((page) => {

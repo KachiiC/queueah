@@ -1,7 +1,7 @@
 import { useState } from "react";
-import AntdList from "../../../components/AntdList";
-import SiteModal from '../../../components/SiteModal'
-import OrganizerFinder from "../../../services/organizers";
+import AntdList from "components/AntdList";
+import SiteModal from "components/SiteModal";
+import OrganizerFinder from "services/organizers";
 import SingleEvent from "./SingleEvent";
 
 const Events = () => {
@@ -17,10 +17,12 @@ const Events = () => {
       <>
         <h1>{evt.event_name}</h1>
         <h1>Event ID: {currentEvent}</h1>
-        <SingleEvent event={evt._id} organizer={evt.organizer}/>
+        <SingleEvent event={evt._id} organizer={evt.organizer} />
       </>
     );
-    const modal = <SiteModal component={modalButton} content={component} type="modal"/>;
+    const modal = (
+      <SiteModal component={modalButton} content={component} type="modal" />
+    );
 
     return {
       description: evt.date,

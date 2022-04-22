@@ -1,6 +1,6 @@
 import Menu from "antd/lib/menu";
 import { Link } from "react-router-dom";
-import DefaultPages from "../../pages/DefaultPages";
+import DefaultPages from "pages/DefaultPages";
 
 const defaultMenu = DefaultPages.map((page) => {
   const { key, path, icon } = page;
