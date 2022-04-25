@@ -1,11 +1,12 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { emptyEvent } from "./data";
 
-const GetEvent = (organizer_id: String, event_id: String) => {
+export const GetEvent = (organizer_id: String, event_id: String) => {
+  
   const [event, setEvent] = useState(emptyEvent);
 
   const FetchUrl = `${process.env.REACT_APP_HEROKU_LINK}/event/${organizer_id}/${event_id}`;
-  console.log(FetchUrl);
 
   useEffect(() => {
     fetch(FetchUrl)
@@ -18,4 +19,20 @@ const GetEvent = (organizer_id: String, event_id: String) => {
   return event;
 };
 
-export default GetEvent;
+export const AddEventFunction = async (data: any, organizer_id: string) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: `http://127.0.0.1:8000/add_event`,
+      data: {
+        input_body: data,
+        input_organizer: organizer_id,
+      },
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(res);
+    return res;
+  } catch (err) {
+    return console.log(err);
+  }
+};

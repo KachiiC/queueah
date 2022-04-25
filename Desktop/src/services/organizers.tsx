@@ -8,11 +8,12 @@ const OrganizerFinder = () => {
   const { user } = useAuth0();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_HEROKU_LINK}/organizer/${user?.email}`, {
+    fetch(`http://127.0.0.1:8000/organizer`, {
       method: "PUT",
       body: JSON.stringify({
         email: user?.email,
         name: user?.name,
+        input_organizer: "6266a01d1ae7477a9a71e200"
       }),
       headers: {
         "Content-Type": "application/json",
@@ -20,8 +21,9 @@ const OrganizerFinder = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setOrganizer(res);
-      });
+        setOrganizer(res.organizer);
+      })
+      .catch(err => console.log(err))
   }, [user?.email, user?.name]);
 
   return organizer;

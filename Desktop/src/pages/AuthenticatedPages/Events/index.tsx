@@ -3,6 +3,8 @@ import AntdList from "components/AntdList";
 import SiteModal from "components/SiteModal";
 import OrganizerFinder from "services/organizers";
 import SingleEvent from "./SingleEvent";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 const Events = () => {
   const [currentEvent, setCurrentEvent] = useState("");
@@ -32,9 +34,14 @@ const Events = () => {
   });
 
   return (
-    <>
+    <div className="">
+      <Button style={{marginLeft: "auto"}}>
+        <Link to="/add_event">
+          Add Event
+        </Link>
+        </Button>
       <AntdList data={refactoredData} />
-    </>
+    </div>
   );
 };
 

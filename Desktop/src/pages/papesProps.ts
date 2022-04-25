@@ -5,6 +5,4 @@ export interface PagesProps {
     path: string;
     element: JSX.Element;
     icon: ReactElement<any, any>;
-    authentication: boolean;
-    authenticated?: undefined;
 }

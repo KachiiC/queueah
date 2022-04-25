@@ -1,5 +1,6 @@
 import { QrcodeOutlined, UserOutlined } from "@ant-design/icons";
 import Events from "./Events";
+import AddEvent from "./AddEvent";
 import Profile from "./Profile";
 
 const AuthticatedPages = [
@@ -8,15 +9,19 @@ const AuthticatedPages = [
     path: "/events",
     element: <Events />,
     icon: <QrcodeOutlined />,
-    authentication: true,
   },
   {
     key: "profile",
     path: "/profile",
     element: <Profile />,
     icon: <UserOutlined />,
-    authentication: true,
   },
+  {
+    key: "add_event",
+    path: "/add_event",
+    element: <AddEvent />,
+    hidden: true
+}
 ];
 
 export default AuthticatedPages;

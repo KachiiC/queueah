@@ -7,9 +7,13 @@ const authenticatedMenu = AuthticatedPages.map((page) => {
   const { Item } = Menu;
 
   return (
-    <Item key={key} icon={icon}>
-      <Link to={path}>{key}</Link>
-    </Item>
+    <>
+      {!page.hidden && (
+        <Item key={key} icon={icon}>
+          <Link to={path}>{key}</Link>
+        </Item>
+      )}
+    </>
   );
 });
 

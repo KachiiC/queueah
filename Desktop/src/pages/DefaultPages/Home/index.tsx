@@ -1,9 +1,11 @@
 import { Skeleton } from "antd";
+import EventForm from "pages/AuthenticatedPages/AddEvent";
+
 
 const Home = () => {
+
   return (
     <>
-      <h1>Home</h1>
       <Skeleton />
     </>
   );

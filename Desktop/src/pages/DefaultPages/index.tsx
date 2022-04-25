@@ -8,15 +8,13 @@ const DefaultPages: PagesProps[] = [
     key: "home",
     path: "/",
     element: <Home />,
-    icon: <HomeFilled />,
-    authentication: false,
+    icon: <HomeFilled />
   },
   {
     key: "about",
     path: "/about",
     element: <About />,
-    icon: <CodeSandboxOutlined />,
-    authentication: false,
+    icon: <CodeSandboxOutlined />
   },
 ];
 
