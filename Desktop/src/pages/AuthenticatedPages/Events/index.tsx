@@ -1,47 +1,35 @@
-import { useState } from "react";
-import AntdList from "components/AntdList";
-import SiteModal from "components/SiteModal";
+import { useEffect, useState } from "react";
 import OrganizerFinder from "services/organizers";
-import SingleEvent from "./SingleEvent";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import EventList from "./EventList";
+import './Events.css'
 
 const Events = () => {
-  const [currentEvent, setCurrentEvent] = useState("");
+  const [events, setEvents] = useState<any>([]);
 
   const data = OrganizerFinder();
+  useEffect(() => {
+    console.log("fetching");
+    fetch(`http://127.0.0.1:8000/events/${data._id}`)
+      .then((res) => res.json())
+      .then((res) => setEvents(res.events))
+      .catch((err) => console.log(err));
+  }, [data._id]);
 
-  const refactoredData = data.events.map((evt) => {
-    const modalButton = (
-      <button onClick={() => setCurrentEvent(evt._id)}>Here</button>
-    );
-    const component = (
-      <>
-        <h1>{evt.event_name}</h1>
-        <h1>Event ID: {currentEvent}</h1>
-        <SingleEvent event={evt._id} organizer={evt.organizer} />
-      </>
-    );
-    const modal = (
-      <SiteModal component={modalButton} content={component} type="modal" />
-    );
-
-    return {
-      description: evt.date,
-      title: evt.description,
-      content: modal,
-    };
-  });
+  console.log(events);
 
   return (
-    <div className="">
-      <Button style={{marginLeft: "auto"}}>
-        <Link to="/add_event">
-          Add Event
-        </Link>
+    <>
+      <div className="add-button-container">
+        <Button style={{ marginLeft: "auto" }}>
+          <Link to="/add_event">Add Event</Link>
         </Button>
-      <AntdList data={refactoredData} />
-    </div>
+      </div>
+      <div className="site-grid-system">
+        <EventList data={events} />
+      </div>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import { Form, Input, Button, message, DatePicker, Switch } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import { AddEventFunction } from "services/events";
 import OrganizerFinder from "services/organizers";
 import "./AddEvent.css";
@@ -7,6 +8,8 @@ const AddEventForm = () => {
   const [form] = Form.useForm();
   const { Item } = Form;
 
+  const navigate = useNavigate()
+
   const organizerId = OrganizerFinder()._id;
 
   const onFinish = async (data: any) => {
@@ -14,10 +17,12 @@ const AddEventForm = () => {
       await AddEventFunction(data, organizerId);
       message.success("Event submitted!");
       form.resetFields();
+      navigate('/events')
     } catch (err) {
       message.error("Submission Error, Invalid Form");
     }
   };
+
   const onFinishFailed = () => message.error("submit failed");
 
   return (
@@ -37,7 +42,7 @@ const AddEventForm = () => {
         />
         <Item
           label="Descripton"
-          name="descripton"
+          name="description"
           rules={[{ required: true }]}
           children={<Input />}
         />
@@ -82,10 +87,10 @@ const AddEventForm = () => {
           children={<Switch />}
         />
         <Button type="primary" htmlType="submit">
-          Button
+          Submit Event
         </Button>
         <Button type="primary" danger>
-          Back to Events
+          <Link to="/events">Back to Events</Link>
         </Button>
       </Form>
     </div>

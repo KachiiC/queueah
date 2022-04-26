@@ -1,0 +1,24 @@
+.add-attendees-button {
+    display: flex;
+    width: 95vw;
+    margin: auto;
+}
+
+.add-attendees-button button {
+    margin: 20px 0px 20px auto;
+}
+
+.event-card {
+    width: 300px
+}
+
+.event-meta {
+    height: 100px;
+}
+
+@media screen and (max-width: 640px) {
+    .event-card {
+        width: 70vw;
+    }
+    
+}

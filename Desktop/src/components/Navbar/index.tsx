@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <Menu mode="horizontal" theme="dark">
       {isAuthenticated ? authenticatedMenu : defaultMenu}
-      <LogButton />
+      <LogButton/>
     </Menu>
   );
 };

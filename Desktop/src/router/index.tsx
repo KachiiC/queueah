@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RouteRender } from "../helpers/routerHelper";
 import Navbar from "../components/Navbar";
 import { useAuth0 } from "@auth0/auth0-react";

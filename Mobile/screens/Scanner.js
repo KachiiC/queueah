@@ -31,8 +31,12 @@ const PermissonChecker = () => {
 const Scanner = () => {
   const hasPermission = PermissonChecker();
   const [scanned, setScanned] = useState(false);
-  const [data, setData] = useState(undefined);
+  const [resData, setResData] = useState(undefined);
   const [result, setResult] = useState(emptyData);
+
+  const outcomeLogic = `${result.attendee.first_name} ${result.attendee.surname} ${result.result}`
+
+  const outcome = result.result === "Invalid qr code" ? result.result : outcomeLogic
 
   const args = {
     method: "PUT",
@@ -42,20 +46,25 @@ const Scanner = () => {
   };
 
   useEffect(() => {
-    if (data !== undefined) {
-      fetch(data, args)
+    if (resData !== undefined) {
+      console.log(resData)
+      fetch(resData, args)
         .then((res) => res.json())
         .then((res) => setResult(res))
         .catch((err) => console.log(err));
     }
-  }, [data]);
+  }, [resData]);
 
-  const handleBarCodeScanned = ({ type, data }) => {
-    setData(data);
-    alert(
-      `${result.attendee.first_name} ${result.attendee.surname} ${result.result}!`
-    );
-    setScanned(true);
+  const handleBarCodeScanned = async ({ type, data }) => {
+    try {
+      const scanned_data = await data
+      setResData(scanned_data)
+      alert(outcome)
+      setScanned(true);
+    } catch (err) {
+      console.log(err)
+      throw (err)
+    }
   };
 
   if (hasPermission === null) {
@@ -66,7 +75,10 @@ const Scanner = () => {
   }
 
   const displayLogic = scanned && (
-    <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
+    <Button title={"Tap to Scan Again"} onPress={() => {
+      setScanned(false);
+      setResult(undefined)
+    }} />
   );
 
   return (

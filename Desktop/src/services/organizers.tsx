@@ -13,7 +13,6 @@ const OrganizerFinder = () => {
       body: JSON.stringify({
         email: user?.email,
         name: user?.name,
-        input_organizer: "6266a01d1ae7477a9a71e200"
       }),
       headers: {
         "Content-Type": "application/json",

@@ -14,7 +14,7 @@ const LogButton = () => {
 
   const clickLogic = () =>
     isAuthenticated
-      ? logout({ returnTo: "http://127.0.0.1:3000/profile" })
+      ? logout({ returnTo: "http://127.0.0.1:3000/" })
       : loginWithRedirect();
 
   return (

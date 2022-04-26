@@ -1,34 +1,34 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { Button, message } from "antd/lib";
+import { useParams } from "react-router-dom";
+import OrganizerFinder from "services/organizers";
+import "./AddAttendees.css";
 
-interface AddAttendeesProps {
-  organizer_id: string;
-  event_id: string;
-}
-
-const AddAttendees = (props: AddAttendeesProps) => {
-  const { organizer_id, event_id } = props;
+const AddAttendees = () => {
+  const { event_id } = useParams();
   const { register, handleSubmit } = useForm();
+  const organizer_data = OrganizerFinder();
 
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("csv_file", data.file[0]);
     axios({
       method: "post",
-      url: `http://127.0.0.1:8000/add_attendees/${organizer_id}/${event_id}`,
+      url: `http://127.0.0.1:8000/add_attendees/${organizer_data._id}/${event_id}`,
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     })
-      .then((res) => console.log(res))
-      .catch((res) => console.log(res));
+      .then((res) => message.success("worked"))
+      .catch((res) => message.error("error"));
   };
 
   return (
-    <div className="m-auto my-10 w-11/12">
-      <h1 className="text-center text-3xl m-5">Add Attendees File here</h1>
-      <form className="" onChange={handleSubmit(onSubmit)}>
-        <label className="w-screen border text-center px-5 py-10 text-xl">
-          Click here to attendees. (only csv files will be accepted).
+    <div className="add-attendees-container">
+      <h1>Add Attendees File here</h1>
+      <form className="" onSubmit={handleSubmit(onSubmit)}>
+        <label className="">
+        Click here to attendees. (only csv files will be accepted).
           <input
             {...register("file")}
             className="sr-only"
@@ -36,6 +36,9 @@ const AddAttendees = (props: AddAttendeesProps) => {
             accept=".csv"
           />
         </label>
+        <Button htmlType="submit" type="primary">
+          Submit
+        </Button>
       </form>
     </div>
   );

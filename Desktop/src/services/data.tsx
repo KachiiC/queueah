@@ -3,10 +3,7 @@ export const emptyAttendee = {
   event_id: "",
   event_name: "",
   email: "",
-  first_name: "",
   gender: "",
-  scanned: false,
-  surname: "",
 };
 
 export const emptyEvent = {
