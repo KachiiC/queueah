@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Button, message } from "antd/lib";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import OrganizerFinder from "services/organizers";
 import "./AddAttendees.css";
 
@@ -24,23 +24,27 @@ const AddAttendees = () => {
   };
 
   return (
-    <div className="add-attendees-container">
-      <h1>Add Attendees File here</h1>
-      <form className="" onSubmit={handleSubmit(onSubmit)}>
-        <label className="">
-        Click here to attendees. (only csv files will be accepted).
+    <>
+      <div className="add-attendees-container">
+      <div className="email-attendees-button">
+        <Button>
+          <Link to={`/event/${event_id}`} style={{ color: "white" }}>
+            Back to Event
+          </Link>
+        </Button>
+      </div>
+        <h1>Add Attendees File here</h1>
+        <form className="" onChange={handleSubmit(onSubmit)}>
           <input
             {...register("file")}
             className="sr-only"
             type="file"
             accept=".csv"
           />
-        </label>
-        <Button htmlType="submit" type="primary">
-          Submit
-        </Button>
-      </form>
-    </div>
+        </form>
+        <h3>(Please note: only csv files can only upload a csv file)</h3>
+      </div>
+    </>
   );
 };
 

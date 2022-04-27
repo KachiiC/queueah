@@ -17,6 +17,7 @@ const emptyData = {
 }
 
 const PermissonChecker = () => {
+
   const { requestPermissionsAsync } = BarCodeScanner;
   const [hasPermission, setHasPermission] = useState(null);
 
@@ -28,38 +29,44 @@ const PermissonChecker = () => {
   return hasPermission;
 };
 
-const Scanner = () => {
+const Scanner = ({ navigation }) => {
   const hasPermission = PermissonChecker();
   const [scanned, setScanned] = useState(false);
-  const [resData, setResData] = useState(undefined);
-  const [result, setResult] = useState(emptyData);
-
-  const outcomeLogic = `${result.attendee.first_name} ${result.attendee.surname} ${result.result}`
-
-  const outcome = result.result === "Invalid qr code" ? result.result : outcomeLogic
-
-  const args = {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  const [url, setUrl] = useState(undefined)
+  const [resData, setResData] = useState({
+    result: "",
+    attendee: {
+      first_name: "",
+      surname: ""
+    }
+  })
 
   useEffect(() => {
-    if (resData !== undefined) {
-      console.log(resData)
-      fetch(resData, args)
-        .then((res) => res.json())
-        .then((res) => setResult(res))
-        .catch((err) => console.log(err));
+    if (url !== undefined) {
+      fetch(url, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" }
+      })
+        .then(res => res.json())
+        .then(res => setResData(res))
+        .catch(err => console.log(err))
     }
-  }, [resData]);
+  }, [url])
 
   const handleBarCodeScanned = async ({ type, data }) => {
     try {
-      const scanned_data = await data
-      setResData(scanned_data)
-      alert(outcome)
+      await data
+      setUrl(data)
+      const alertLogic = () => {
+        const res = resData.result
+        console.log(res)
+        if (res.length == 0) return "A bug detected"
+        else if (res === "already scanned!" || res === "now scanned") {
+          return `${resData.attendee.first_name} ${resData.attendee.surname} ${res}`
+        }
+        return res
+      }
+      alert(alertLogic())
       setScanned(true);
     } catch (err) {
       console.log(err)
@@ -77,7 +84,7 @@ const Scanner = () => {
   const displayLogic = scanned && (
     <Button title={"Tap to Scan Again"} onPress={() => {
       setScanned(false);
-      setResult(undefined)
+      // setResult(undefined)
     }} />
   );
 
@@ -98,5 +105,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-  },
+  }
 });

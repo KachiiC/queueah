@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Card, Avatar } from "antd";
 import Meta from "antd/lib/card/Meta";
+import { RandomImage } from "helpers/randomImage";
 import { Link } from "react-router-dom";
 
 interface EventListProps {
@@ -26,7 +27,7 @@ const EventList = (props: EventListProps) => {
     const cardImage = (
       <img
         alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+        src={RandomImage()}
       />
     );
 

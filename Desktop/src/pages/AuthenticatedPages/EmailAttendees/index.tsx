@@ -28,13 +28,21 @@ const EmailAttendees = () => {
   }, [email, event_id, navigate, organizer_id]);
 
   return (
-    <>
+    <div className="email-attendees-form">
       <h1>Are you sure you want to send qr code emails?</h1>
-      <Button onClick={() => setEmail(true)}>Send Emails</Button>
-      <Button onClick={() => navigate(`/event/${event_id}`)} danger>
-        Cancel
-      </Button>
-    </>
+      <div className="confirm-buttons-container">
+        <Button onClick={() => setEmail(true)} type="primary">
+          Send Emails
+        </Button>
+        <Button
+          onClick={() => navigate(`/event/${event_id}`)}
+          danger
+          type="primary"
+        >
+          Cancel
+        </Button>
+      </div>
+    </div>
   );
 };
 

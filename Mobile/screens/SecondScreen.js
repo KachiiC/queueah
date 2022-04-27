@@ -9,8 +9,11 @@ import {
 } from "react-native-rapi-ui";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function ({ navigation }) {
+export default function ({ routes, navigation }) {
   const { isDarkmode } = useTheme();
+
+  // const { item } = routes.params
+  
   return (
     <Layout>
       <TopNav

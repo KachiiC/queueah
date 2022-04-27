@@ -18,21 +18,24 @@ export const AntdTableColumns = () => [
     dataIndex: "first_name",
     key: "first_name",
     sorter: sorter("first_name"),
+    align: 'center' as 'center'
   },
-  {
-    title: "Surname",
-    dataIndex: "surname",
-    key: "surname",
-    sorter: sorter("surname"),
-  },
+  // {
+  //   title: "Surname",
+  //   dataIndex: "surname",
+  //   key: "surname",
+  //   sorter: sorter("surname"),
+  // },
   {
     title: "Email",
     dataIndex: "email",
+    align: 'center' as 'center',
     key: "email",
   },
   {
     title: "Gender",
     dataIndex: "gender",
+    align: 'center' as 'center',
     key: "gender",
     filters: [
       {

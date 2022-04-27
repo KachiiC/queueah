@@ -22,7 +22,7 @@ const Events = () => {
   return (
     <>
       <div className="add-button-container">
-        <Button style={{ marginLeft: "auto" }}>
+        <Button style={{ marginLeft: "auto", background: 'black', border:"1px solid black" }} type="primary">
           <Link to="/add_event">Add Event</Link>
         </Button>
       </div>

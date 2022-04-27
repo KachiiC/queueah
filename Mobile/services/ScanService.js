@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 const ScanService = (url) => {
-  console.clear()
   
   useEffect(() => {
     url !== undefined ? console.log(true) : console.log(false)

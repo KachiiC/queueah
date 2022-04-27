@@ -1,17 +1,12 @@
-.add-attendees-button {
-    display: flex;
-    width: 95vw;
-    margin: auto;
-}
-
-.add-attendees-button button {
-    margin: 20px 0px 20px auto;
-}
 
 .event-card {
-    width: 300px
+    width: 300px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
+.event-card img {
+    height: 200px;
+}
 .event-meta {
     height: 100px;
 }

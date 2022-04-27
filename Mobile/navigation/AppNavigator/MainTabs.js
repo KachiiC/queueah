@@ -3,7 +3,6 @@ import { themeColor, useTheme } from "react-native-rapi-ui";
 import EventsNav from "./ScreenNavigation/Events";
 import ScannerNav from "./ScreenNavigation/Scanner";
 import SettingsNav from "./ScreenNavigation/Settings";
-import ProfileNav from "./ScreenNavigation/Profile";
 
 const Tabs = createBottomTabNavigator();
 
@@ -23,7 +22,6 @@ const MainTabs = () => {
   return (
     <Navigator screenOptions={screenOptions}>
       {EventsNav}
-      {ProfileNav}
       {ScannerNav}
       {SettingsNav}
     </Navigator>

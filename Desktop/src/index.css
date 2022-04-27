@@ -1,3 +1,7 @@
+body {
+    background: black
+}
+
 .site-grid-system {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -23,6 +27,10 @@
     cursor: pointer;
 }
 
+.site-res-image {
+    width: 100%;
+    margin: auto;
+}
 .display-flex {
     display: flex
 }

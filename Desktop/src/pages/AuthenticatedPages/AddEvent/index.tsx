@@ -86,7 +86,7 @@ const AddEventForm = () => {
           valuePropName="checked"
           children={<Switch />}
         />
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" className="add-event-button">
           Submit Event
         </Button>
         <Button type="primary" danger>

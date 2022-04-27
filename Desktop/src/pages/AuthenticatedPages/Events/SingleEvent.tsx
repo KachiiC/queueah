@@ -1,3 +1,4 @@
+import { AlertFilled, MailOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import Button from "antd/lib/button";
 import AntdTable from "components/AntdTable";
 import { useEffect, useState } from "react";
@@ -20,14 +21,16 @@ const SingleEvent = () => {
 
   return (
     <>
-      <div className="add-attendees-button">
+      <div className="email-attendees-button">
         <Button>
           <Link to={`/event/add_attendees/${event_id}`}>Add Attendees</Link>
+          <PlusCircleOutlined style={{ padding: "5px", color: "white" }} />
         </Button>
-        <Button>
-          <Link to={`/event/email_attendees/${event_id}`}>
-            Email Attendees
-          </Link>
+      </div>
+      <div className="add-attendees-button">
+        <Button className="">
+          <Link to={`/event/email_attendees/${event_id}`}>Email Attendees </Link>
+          <MailOutlined />
         </Button>
       </div>
       <AntdTable data={attendees} />;

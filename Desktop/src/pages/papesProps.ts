@@ -4,5 +4,5 @@ export interface PagesProps {
     key: string;
     path: string;
     element: JSX.Element;
-    icon: ReactElement<any, any>;
+    icon?: ReactElement<any, any>;
 }
